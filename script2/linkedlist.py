@@ -45,6 +45,7 @@ def dijkstra(lista,id_inicio, id_final):
     lista2 = lista.copy()
     camino =[]
     
+    #seteo del nodo fuente y obtencion de la posicion del nodo final en la lista de nodos
     while i<len(lista):
         if id_inicio == lista[i].getvalor():
             lista[i].setdist(0)
@@ -63,14 +64,17 @@ def dijkstra(lista,id_inicio, id_final):
     
     while lista[pos_idf].getexplorado() == False:
         
+        #bajo prueba, se supone que cuando se consiga un poso, vuelva al nodo fuente y busque otro camino
         if len(lista2) < 1:
             seleccionado = lista[pos_idi]
-            lis
+            #lis
             print("ya no hay mas joven")
         else:
+            #esto ya pasa si el nodo si tiene adyacentes
             listaAux = getnoexplorados(lista2)
             seleccionado = shell(listaAux,len(listaAux))
         
+        #se busca en la lista al nodo adyacente o al seleccionado con el menor peso en su camino
         for j in range(len(lista)):
             if seleccionado.getvalor() == lista[j].getvalor():
                 print(f"estado del nodo seleccionado (explorado o no) {lista[j].getexplorado()}")
@@ -79,6 +83,8 @@ def dijkstra(lista,id_inicio, id_final):
                 camino.append(lista[j])
                 lista[j].setexplorado(True)
                 i = j
+                
+        #una vez seleccionado el nodo se analizan sus adyacentes
 
         print("===nodo seleccionado y sus adyacentes: ===")
         lista[i].saludo()
@@ -92,6 +98,8 @@ def dijkstra(lista,id_inicio, id_final):
                 print("id del adyacente:")
                 for l in lista:
                     if l.getvalor() == k:
+                        #se determina una nueva estimacion para el nodo, si la estimacion es menor a la que ya tenia,
+                        #esta cambia por la nueva estimacion y se actualiza el predecesor de ese nodo
                         if lista[i].getdistancia() + dic.get(k) < l.getdistancia():
                 
                             print("hay una mejor estimacion")
@@ -105,6 +113,7 @@ def dijkstra(lista,id_inicio, id_final):
                         lista2.append(l)
                             
         #lista[pos_idi].setprev(None)
+        #mostrar ruta
         if lista[pos_idf].getexplorado()==True:
             getruta(lista[pos_idf])
                     
@@ -112,6 +121,8 @@ def dijkstra(lista,id_inicio, id_final):
     print(peso)
     return camino
 
+
+#lectura de datos y configuracion de la lista de adyacencia
 try:
     with open('red_transporte.txt') as file:
         ent = file.read().split("\n")
