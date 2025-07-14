@@ -124,7 +124,7 @@ def dijkstra(lista,id_inicio, id_final):
 
 #lectura de datos y configuracion de la lista de adyacencia
 try:
-    with open('red_transporte.txt') as file:
+    with open('script2/red_transporte.txt') as file:
         ent = file.read().split("\n")
 except FileNotFoundError:
     print("Hay un error con el archivo, porfavor vuelva a intentarlo")
@@ -160,7 +160,7 @@ for i in range(int(n[1])):
 
 
 print("--------")
-camino = dijkstra(lista_nodos,2,8)
+camino = dijkstra(lista_nodos,2,7)
 #print(lista_nodos)
 #for x in lista_nodos:
  #   print(x.getlista())
