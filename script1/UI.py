@@ -34,7 +34,7 @@ class App(cus.CTk):
         self.nota.place(x=280,y=335)
         #se carga la data guardada en minas.in para posteriormente ponerla en el input
         try:
-            with open('./script1/minas.in') as file:
+            with open('script1/minas.in') as file:
                 self.entrada.insert("1.0",file.read())
         except FileNotFoundError:
             print("Hay un error con el archivo, porfavor vuelva a intentarlo")

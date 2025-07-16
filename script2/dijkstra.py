@@ -1,14 +1,15 @@
 from nodo import Nodo  
 import math
 
-def getruta(nodo:Nodo):
-    nodo.saludo()
+def getruta(nodo:Nodo, lista):
+    lista.append(nodo)
     #caso base, cuando ya llega a la fuente y no hay mas predecesores:
     if nodo.getprev() == None:
-        return 0
+        print(lista)
+        return lista
     #caso contrario, sigue con el predecesor para mostrarlo por pantalla
     else:
-        return getruta(nodo.getprev())
+        return getruta(nodo.getprev(),lista)
     
 
 
@@ -121,7 +122,12 @@ def dijkstra(lista,id_inicio, id_final):
         #cuando ya se encuentra el camino hacia el nodo objetivo, se imprime y se acaba el algoritmo
         if lista[pos_idf].getexplorado()==True:
             print("\nRuta minima encontrada: ")
-            getruta(lista[pos_idf])
+            camino = []
+            
+            camino = getruta(lista[pos_idf],camino)
+            camino.reverse()
+            for x in camino:
+                x.saludo()
         #si la lista queda vacia, entonces no hay camino
         elif len(lista_prioridad) <1:
             print("no hay camino")
@@ -137,7 +143,7 @@ def dijkstra(lista,id_inicio, id_final):
 def cargardatos():
     
     try:
-        with open('./script2/red_transporte.txt') as file:
+        with open('script2/red_transporte.txt') as file:
             ent = file.read().split("\n")
     except FileNotFoundError:
         print("Hay un error con el archivo, porfavor vuelva a intentarlo")
