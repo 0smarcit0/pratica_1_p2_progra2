@@ -1,4 +1,6 @@
-
+import front
 
 if __name__ == "__main__":
-    print("uwuw")
+    front.menu()
+    
+    

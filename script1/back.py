@@ -145,7 +145,7 @@ def generar_salida(x,y,f,c):
     
     #se guarda el resultado en el archivo de salida
     try:
-        with open('script1/minas.out',"w") as file:
+        with open('./script1/minas.out',"w") as file:
             file.write(salida)
                
     except FileNotFoundError:

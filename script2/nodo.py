@@ -5,20 +5,17 @@ class Nodo():
         self.explorado = False
         self.dist_r = 99999
         self.list_ady = []
-        self.mirado = False
     
     def setdist(self,dist):
         self.dist_r = dist
     def setprev(self,nodo_prev):
-        self.mirado = True
         self.nodo_ant = nodo_prev
+        
     def setexplorado(self,bool):
-        print("se cambio")
-        self.explorado = True
+        self.explorado = bool
     
     
-    def getmirado(self):
-        return self.mirado
+   
     def getvalor(self):
         return self.valor
     def getlista(self):
@@ -36,7 +33,7 @@ class Nodo():
         return self.nodo_ant
     
     def saludo(self):
-        print(f"hola soy el nodo con ID: {self.valor}")
+        print(f"Estacion/parada con ID: {self.valor}")
     def agregar_ady(self,ady):
         self.list_ady.append(ady)
 
